@@ -8,7 +8,7 @@
  Year    : 2024
 -------------------------------------------
  - HANYA menulis ke file log lokal
- - terhubung ke WhatsApp / Telegram
+ - TIDAK terhubung ke WhatsApp / Telegram
  - Login: zimzz123 / 12345
 ===========================================
 """
@@ -45,6 +45,7 @@ def get_lebar():
 
 LEBAR = get_lebar()
 
+# ============ WARNA ============
 class C:
     if PAKAI_WARNA:
         RED     = "\033[1;31m"
@@ -65,6 +66,7 @@ class C:
         MAGENTA = WHITE = DIM = RESET = BLINK = ""
         BG_RED = BG_BLUE = ""
 
+# ============ API + LOGO ============
 def buat_fire():
     if not PAKAI_API:
         return []
@@ -130,6 +132,7 @@ def print_banner():
     print(C.MAGENTA + "  ╚══════════════════════════════════════════════════════╝" + C.RESET)
     print(C.ORANGE + "  " + "─"*min(LEBAR-4, 56) + C.RESET)
 
+# ============ LOGIN ============
 def login():
     max_percobaan = 3
     percobaan = 0
@@ -170,12 +173,13 @@ def login():
     time.sleep(2)
     return False
 
+# ============ UTIL ============
 def generate_otp():
     return str(random.randint(100000, 999999))
 
-def tulis_log(file_log, platform, nomor, isi, status="TERCATAT"):
+def tulis_log(file_log, platform, target, isi, status="TERCATAT"):
     waktu = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    baris = f"[{waktu}] [{status}] [{platform}] -> {nomor} : {isi}"
+    baris = f"[{waktu}] [{status}] [{platform}] -> {target} : {isi}"
     with open(file_log, "a", encoding="utf-8") as f:
         f.write(baris + "\n")
     return baris
@@ -194,7 +198,7 @@ def progress_bar(current, total, width=None):
     bar = "█" * filled + "░" * (width - filled)
     return f"[{bar}] {int(persen*100):3d}%"
 
-# ====== SPAM OTP ======
+# ============ SPAM OTP (WA & TELEGRAM) ============
 def spam_otp(platform, file_log, warna_platform):
     print()
     print(warna_platform + "  ╔══════════════════════════════════════════════╗")
@@ -253,38 +257,9 @@ def spam_otp(platform, file_log, warna_platform):
     print(f"  Gagal     : {C.RED}{gagal}{C.RESET}")
     print(f"  Log file  : {C.YELLOW}{file_log}{C.RESET}")
     print(C.ORANGE + "="*min(LEBAR-4, 58) + C.RESET)
-    print(f"{C.YELLOW}[i] OTP di atas adalah random.HATI-HATI MENGUNAKAN.{C.RESET}\n")
+    print(f"{C.YELLOW}[i] ............{C.RESET}\n")
 
-# ====== CANNON WA ======
-def submenu_cannon():
-    while True:
-        print_banner()
-        print(C.RED + "  ╔══════════════════════════════════════════════════════╗")
-        print(C.RED + "  ║        💣  C A N N O N   W A  💣                     ║")
-        print(C.RED + "  ║           (Simulasi Massal - Local Only)             ║")
-        print(C.RED + "  ╚══════════════════════════════════════════════════════╝" + C.RESET)
-        print()
-        print(f"  {C.CYAN}[1]{C.RESET} {C.WHITE}💣 Mulai Cannon{C.RESET}")
-        print(f"  {C.CYAN}[2]{C.RESET} {C.WHITE}📂 Buka Riwayat Cannon{C.RESET}")
-        print(f"  {C.CYAN}[3]{C.RESET} {C.WHITE}🗑️  Hapus Riwayat Cannon{C.RESET}")
-        print(f"  {C.CYAN}[0]{C.RESET} {C.WHITE}⬅️  Kembali{C.RESET}")
-        pilih = input(f"\n  {C.CYAN}Pilih > {C.RESET}").strip()
-        if pilih == "1":
-            print_banner()
-            cannon_wa()
-            input("\n  Enter untuk kembali...")
-        elif pilih == "2":
-            buka_cannon()
-            input("\n  Enter untuk kembali...")
-        elif pilih == "3":
-            hapus_riwayat_cannon()
-            input("\n  Enter untuk kembali...")
-        elif pilih == "0":
-            return
-        else:
-            print(f"\n{C.RED}[!] Pilihan tidak valid.{C.RESET}")
-            time.sleep(1)
-
+# ============ CANNON WA ============
 def cannon_wa():
     print()
     print(C.RED + "  ╔══════════════════════════════════════════════════════╗")
@@ -379,29 +354,28 @@ def hapus_riwayat_cannon():
         os.remove(LOG_FILE_CANNON)
         print(f"\n  {C.GREEN}[✓] Dihapus.{C.RESET}\n")
 
-# ====== CANNON GRUB WA ======
-def submenu_cannon_grub():
+def submenu_cannon():
     while True:
         print_banner()
         print(C.RED + "  ╔══════════════════════════════════════════════════════╗")
-        print(C.RED + "  ║      💣  C A N N O N   G R U B   W A  💣             ║")
-        print(C.RED + "  ║         (Massal ke Grup - Local Only)       ║")
+        print(C.RED + "  ║        💣  C A N N O N   W A  💣                     ║")
+        print(C.RED + "  ║           (Simulasi Massal - Local Only)             ║")
         print(C.RED + "  ╚══════════════════════════════════════════════════════╝" + C.RESET)
         print()
-        print(f"  {C.CYAN}[1]{C.RESET} {C.WHITE}💣 Mulai Cannon Grub{C.RESET}")
-        print(f"  {C.CYAN}[2]{C.RESET} {C.WHITE}📂 Buka Riwayat Cannon Grub{C.RESET}")
-        print(f"  {C.CYAN}[3]{C.RESET} {C.WHITE}🗑️  Hapus Riwayat Cannon Grub{C.RESET}")
+        print(f"  {C.CYAN}[1]{C.RESET} {C.WHITE}💣 Mulai Cannon{C.RESET}")
+        print(f"  {C.CYAN}[2]{C.RESET} {C.WHITE}📂 Buka Riwayat Cannon{C.RESET}")
+        print(f"  {C.CYAN}[3]{C.RESET} {C.WHITE}🗑️  Hapus Riwayat Cannon{C.RESET}")
         print(f"  {C.CYAN}[0]{C.RESET} {C.WHITE}⬅️  Kembali{C.RESET}")
         pilih = input(f"\n  {C.CYAN}Pilih > {C.RESET}").strip()
         if pilih == "1":
             print_banner()
-            cannon_grub_wa()
+            cannon_wa()
             input("\n  Enter untuk kembali...")
         elif pilih == "2":
-            buka_cannon_grub()
+            buka_cannon()
             input("\n  Enter untuk kembali...")
         elif pilih == "3":
-            hapus_riwayat_cannon_grub()
+            hapus_riwayat_cannon()
             input("\n  Enter untuk kembali...")
         elif pilih == "0":
             return
@@ -409,6 +383,7 @@ def submenu_cannon_grub():
             print(f"\n{C.RED}[!] Pilihan tidak valid.{C.RESET}")
             time.sleep(1)
 
+# ============ CANNON GRUB WA ============
 def cannon_grub_wa():
     print()
     print(C.RED + "  ╔══════════════════════════════════════════════════════╗")
@@ -492,4 +467,331 @@ def cannon_grub_wa():
     print(f"  {C.CYAN}Durasi        : {C.WHITE}{durasi:.2f} detik{C.RESET}")
     print(f"  {C.CYAN}Log file      : {C.YELLOW}{LOG_FILE_CANNON_GRUB}{C.RESET}")
     print(C.ORANGE + "  " + "═"*min(LEBAR-4, 58) + C.RESET)
-    print(f"  {C.YELLOW}[i] HAHAHAHAHHA SIAPA SURUH NGEHINA. MAMPUS GRUB LU.{C.RESET
+    print(f"  {C.YELLOW}[i] INI CUMA SIMULASI. Tidak ada pesan terkirim ke grup.{C.RESET}\n")
+
+def buka_cannon_grub():
+    print()
+    print(C.CYAN + "  ╔══════════════════════════════════════════════════════╗")
+    print(C.CYAN + "  ║      📂  RIWAYAT CANNON GRUB WA  📂                  ║")
+    print(C.CYAN + "  ╚══════════════════════════════════════════════════════╝" + C.RESET)
+    print()
+    if not os.path.exists(LOG_FILE_CANNON_GRUB):
+        print(f"  {C.YELLOW}[!] Belum ada riwayat cannon grub.{C.RESET}\n")
+        return
+    with open(LOG_FILE_CANNON_GRUB, "r", encoding="utf-8") as f:
+        print(f.read())
+
+def hapus_riwayat_cannon_grub():
+    print()
+    if not os.path.exists(LOG_FILE_CANNON_GRUB):
+        print(f"  {C.YELLOW}[!] Tidak ada riwayat.{C.RESET}\n")
+        return
+    k = input(f"  {C.YELLOW}Yakin hapus? (y/n) > {C.RESET}").strip().lower()
+    if k == "y":
+        os.remove(LOG_FILE_CANNON_GRUB)
+        print(f"\n  {C.GREEN}[✓] Dihapus.{C.RESET}\n")
+
+def submenu_cannon_grub():
+    while True:
+        print_banner()
+        print(C.RED + "  ╔══════════════════════════════════════════════════════╗")
+        print(C.RED + "  ║      💣  C A N N O N   G R U B   W A  💣             ║")
+        print(C.RED + "  ║         (Simulasi Massal ke Grup - Local Only)       ║")
+        print(C.RED + "  ╚══════════════════════════════════════════════════════╝" + C.RESET)
+        print()
+        print(f"  {C.CYAN}[1]{C.RESET} {C.WHITE}💣 Mulai Cannon Grub{C.RESET}")
+        print(f"  {C.CYAN}[2]{C.RESET} {C.WHITE}📂 Buka Riwayat Cannon Grub{C.RESET}")
+        print(f"  {C.CYAN}[3]{C.RESET} {C.WHITE}🗑️  Hapus Riwayat Cannon Grub{C.RESET}")
+        print(f"  {C.CYAN}[0]{C.RESET} {C.WHITE}⬅️  Kembali{C.RESET}")
+        pilih = input(f"\n  {C.CYAN}Pilih > {C.RESET}").strip()
+        if pilih == "1":
+            print_banner()
+            cannon_grub_wa()
+            input("\n  Enter untuk kembali...")
+        elif pilih == "2":
+            buka_cannon_grub()
+            input("\n  Enter untuk kembali...")
+        elif pilih == "3":
+            hapus_riwayat_cannon_grub()
+            input("\n  Enter untuk kembali...")
+        elif pilih == "0":
+            return
+        else:
+            print(f"\n{C.RED}[!] Pilihan tidak valid.{C.RESET}")
+            time.sleep(1)
+
+# ============ BAN GRUB SIMULASI ============
+ALASAN_BAN = ["Spam", "SARA", "Toxic / Bullying", "Konten Dewasa",
+              "Judi Online", "Penipuan", "Promosi Ilegal", "Lainnya"]
+
+def ban_grub_simulasi():
+    print()
+    print(C.RED + "  ╔══════════════════════════════════════════════════════╗")
+    print(C.RED + "  ║        🚫  B A N   G R U B  (SIMULASI)  🚫           ║")
+    print(C.RED + "  ╚══════════════════════════════════════════════════════╝" + C.RESET)
+    print()
+    nama_grup = input(f"  {C.CYAN}Nama Grup > {C.RESET}").strip()
+    if not nama_grup:
+        print(f"\n{C.RED}[!] Nama grup tidak boleh kosong.{C.RESET}")
+        input("  Enter...")
+        return
+    link_grup = input(f"  {C.CYAN}Link Grup > {C.RESET}").strip()
+    if not link_grup:
+        print(f"\n{C.RED}[!] Link grup tidak boleh kosong.{C.RESET}")
+        input("  Enter...")
+        return
+    try:
+        jumlah = int(input(f"  {C.CYAN}Jumlah Report > {C.RESET}"))
+        delay  = float(input(f"  {C.CYAN}Delay (detik) > {C.RESET}"))
+        if jumlah <= 0 or delay < 0:
+            raise ValueError
+    except ValueError:
+        print(f"\n{C.RED}[!] Angka tidak valid.{C.RESET}")
+        input("  Enter...")
+        return
+    print()
+    print(f"  {C.CYAN}┌── PILIH ALASAN BAN ──{C.RESET}")
+    for i, alasan in enumerate(ALASAN_BAN, 1):
+        print(f"  {C.GREEN}[{i}]{C.RESET} {alasan}")
+    print(f"  {C.GREEN}[0]{C.RESET} Batal")
+    try:
+        pa = int(input(f"\n  {C.CYAN}Pilih > {C.RESET}"))
+        if pa == 0:
+            return
+        if not (1 <= pa <= len(ALASAN_BAN)):
+            raise ValueError
+    except ValueError:
+        print(f"\n{C.RED}[!] Pilihan tidak valid.{C.RESET}")
+        input("  Enter...")
+        return
+    alasan = ALASAN_BAN[pa - 1]
+    print()
+    print(C.ORANGE + "  " + "═"*min(LEBAR-4, 58) + C.RESET)
+    print(C.YELLOW + "  📋 KONFIRMASI BAN GRUB" + C.RESET)
+    print(C.ORANGE + "  " + "═"*min(LEBAR-4, 58) + C.RESET)
+    print(f"  {C.CYAN}Nama Grup     : {C.WHITE}{nama_grup}{C.RESET}")
+    print(f"  {C.CYAN}Link Grup     : {C.WHITE}{link_grup}{C.RESET}")
+    print(f"  {C.CYAN}Jumlah Report : {C.WHITE}{jumlah}x{C.RESET}")
+    print(f"  {C.CYAN}Delay         : {C.WHITE}{delay} detik{C.RESET}")
+    print(f"  {C.CYAN}Alasan        : {C.WHITE}{alasan}{C.RESET}")
+    print(C.ORANGE + "  " + "═"*min(LEBAR-4, 58) + C.RESET)
+    input(f"  {C.YELLOW}Tekan ENTER untuk memulai...{C.RESET}")
+    print()
+    print(C.RED + C.BLINK + "  ╔══════════════════════════════════════════════════════╗")
+    print(C.RED + C.BLINK + "  ║           🚫  D I M U L A I  🚫                      ║")
+    print(C.RED + C.BLINK + "  ╚══════════════════════════════════════════════════════╝" + C.RESET)
+    print()
+    sesi_id = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+    tulis_log(LOG_FILE_BAN, "BAN-GRUB", nama_grup, f"--- SESI {sesi_id} DIMULAI (link={link_grup}, alasan={alasan}, report={jumlah}x) ---", "INFO")
+    sukses, gagal = 0, 0
+    waktu_mulai = time.time()
+    for i in range(1, jumlah + 1):
+        try:
+            if random.random() < 0.08:
+                tulis_log(LOG_FILE_BAN, "BAN-GRUB", nama_grup, f"REPORT#{i:03d} {alasan}", "GAGAL")
+                gagal += 1
+                warna_status = C.RED
+                status_teks = "SKIP"
+            else:
+                tulis_log(LOG_FILE_BAN, "BAN-GRUB", nama_grup, f"REPORT#{i:03d} {alasan}", "TERCATAT")
+                sukses += 1
+                warna_status = C.GREEN
+                status_teks = "OK"
+            bar = progress_bar(i, jumlah)
+            sys.stdout.write(f"\r  {warna_status}[REPORT {i:>3}/{jumlah}] {bar} {warna_status}{status_teks}{C.RESET}")
+            sys.stdout.flush()
+            time.sleep(delay)
+        except KeyboardInterrupt:
+            print(f"\n\n  {C.RED}[!] BAN GRUB dihentikan{C.RESET}")
+            break
+        except Exception as e:
+            print(f"\n  {C.RED}[!] Error: {e}{C.RESET}")
+            gagal += 1
+    durasi = time.time() - waktu_mulai
+    tulis_log(LOG_FILE_BAN, "BAN-GRUB", nama_grup, f"--- SESI {sesi_id} SELESAI (sukses={sukses}, gagal={gagal}, durasi={durasi:.2f}s) ---", "INFO")
+    print("\n")
+    print(C.ORANGE + "  " + "═"*min(LEBAR-4, 58) + C.RESET)
+    print(C.RED + "     🚫  [ RINGKASAN BAN GRUB SIMULASI ]  🚫" + C.RESET)
+    print(C.ORANGE + "  " + "═"*min(LEBAR-4, 58) + C.RESET)
+    print(f"  {C.CYAN}Sesi ID       : {C.WHITE}{sesi_id}{C.RESET}")
+    print(f"  {C.CYAN}Nama Grup     : {C.WHITE}{nama_grup}{C.RESET}")
+    print(f"  {C.CYAN}Link Grup     : {C.WHITE}{link_grup}{C.RESET}")
+    print(f"  {C.CYAN}Jumlah Report : {C.WHITE}{jumlah}x{C.RESET}")
+    print(f"  {C.CYAN}Delay         : {C.WHITE}{delay} detik{C.RESET}")
+    print(f"  {C.CYAN}Alasan        : {C.WHITE}{alasan}{C.RESET}")
+    print(f"  {C.CYAN}Berhasil      : {C.GREEN}{sukses}{C.RESET}")
+    print(f"  {C.CYAN}Gagal/Skip    : {C.RED}{gagal}{C.RESET}")
+    print(f"  {C.CYAN}Durasi        : {C.WHITE}{durasi:.2f} detik{C.RESET}")
+    print(f"  {C.CYAN}Log file      : {C.YELLOW}{LOG_FILE_BAN}{C.RESET}")
+    print(C.ORANGE + "  " + "═"*min(LEBAR-4, 58) + C.RESET)
+    print(f"  {C.YELLOW}[i] hahahaha. salah sendiri penyebab kehancuran nya.{C.RESET}\n")
+
+def buka_ban_grub():
+    print()
+    if not os.path.exists(LOG_FILE_BAN):
+        print(f"  {C.YELLOW}[!] Belum ada riwayat ban grub.{C.RESET}\n")
+        return
+    with open(LOG_FILE_BAN, "r", encoding="utf-8") as f:
+        print(f.read())
+
+def hapus_riwayat_ban():
+    print()
+    if not os.path.exists(LOG_FILE_BAN):
+        print(f"  {C.YELLOW}[!] Tidak ada riwayat.{C.RESET}\n")
+        return
+    k = input(f"  {C.YELLOW}Yakin hapus? (y/n) > {C.RESET}").strip().lower()
+    if k == "y":
+        os.remove(LOG_FILE_BAN)
+        print(f"\n  {C.GREEN}[✓] Dihapus.{C.RESET}\n")
+
+def submenu_ban_grub():
+    while True:
+        print_banner()
+        print(C.RED + "  ╔══════════════════════════════════════════════════════╗")
+        print(C.RED + "  ║        🚫  B A N   G R U B  (SIMULASI)  🚫           ║")
+        print(C.RED + "  ╚══════════════════════════════════════════════════════╝" + C.RESET)
+        print()
+        print(f"  {C.CYAN}[1]{C.RESET} {C.WHITE}🚫 Mulai Ban Grub{C.RESET}")
+        print(f"  {C.CYAN}[2]{C.RESET} {C.WHITE}📂 Buka Riwayat Ban Grub{C.RESET}")
+        print(f"  {C.CYAN}[3]{C.RESET} {C.WHITE}🗑️  Hapus Riwayat Ban Grub{C.RESET}")
+        print(f"  {C.CYAN}[0]{C.RESET} {C.WHITE}⬅️  Kembali{C.RESET}")
+        pilih = input(f"\n  {C.CYAN}Pilih > {C.RESET}").strip()
+        if pilih == "1":
+            print_banner()
+            ban_grub_simulasi()
+            input("\n  Enter untuk kembali...")
+        elif pilih == "2":
+            buka_ban_grub()
+            input("\n  Enter untuk kembali...")
+        elif pilih == "3":
+            hapus_riwayat_ban()
+            input("\n  Enter untuk kembali...")
+        elif pilih == "0":
+            return
+        else:
+            print(f"\n{C.RED}[!] Pilihan tidak valid.{C.RESET}")
+            time.sleep(1)
+
+# ============ LIHAT & HAPUS LOG ============
+def lihat_log():
+    print()
+    print(f"  {C.CYAN}[1]{C.RESET} Log WA")
+    print(f"  {C.CYAN}[2]{C.RESET} Log Telegram")
+    print(f"  {C.CYAN}[3]{C.RESET} Log CANNON WA")
+    print(f"  {C.CYAN}[4]{C.RESET} Log CANNON GRUB WA")
+    print(f"  {C.CYAN}[5]{C.RESET} Log BAN GRUB")
+    print(f"  {C.CYAN}[0]{C.RESET} Kembali")
+    pilih = input(f"\n  {C.CYAN}Pilih > {C.RESET}").strip()
+    mapping = {
+        "1": LOG_FILE_WA, "2": LOG_FILE_TG, "3": LOG_FILE_CANNON,
+        "4": LOG_FILE_CANNON_GRUB, "5": LOG_FILE_BAN,
+    }
+    if pilih not in mapping:
+        return
+    file_log = mapping[pilih]
+    if not os.path.exists(file_log):
+        print(f"\n{C.RED}[!] Belum ada log di {file_log}.{C.RESET}")
+        return
+    print(f"\n{C.CYAN}=== {file_log} ==={C.RESET}")
+    with open(file_log, "r", encoding="utf-8") as f:
+        print(f.read())
+
+def hapus_log():
+    print()
+    print(f"  {C.CYAN}[1]{C.RESET} Hapus Log WA")
+    print(f"  {C.CYAN}[2]{C.RESET} Hapus Log Telegram")
+    print(f"  {C.CYAN}[3]{C.RESET} Hapus Log CANNON WA")
+    print(f"  {C.CYAN}[4]{C.RESET} Hapus Log CANNON GRUB WA")
+    print(f"  {C.CYAN}[5]{C.RESET} Hapus Log BAN GRUB")
+    print(f"  {C.CYAN}[6]{C.RESET} Hapus Semua Log")
+    print(f"  {C.CYAN}[0]{C.RESET} Kembali")
+    pilih = input(f"\n  {C.CYAN}Pilih > {C.RESET}").strip()
+    mapping = {
+        "1": [LOG_FILE_WA], "2": [LOG_FILE_TG], "3": [LOG_FILE_CANNON],
+        "4": [LOG_FILE_CANNON_GRUB], "5": [LOG_FILE_BAN],
+        "6": [LOG_FILE_WA, LOG_FILE_TG, LOG_FILE_CANNON, LOG_FILE_CANNON_GRUB, LOG_FILE_BAN],
+    }
+    if pilih not in mapping:
+        return
+    for f in mapping[pilih]:
+        if os.path.exists(f):
+            os.remove(f)
+            print(f"{C.GREEN}[✓] {f} dihapus.{C.RESET}")
+        else:
+            print(f"{C.RED}[!] {f} tidak ada.{C.RESET}")
+
+# ============ MENU UTAMA ============
+def menu():
+    while True:
+        print_banner()
+        print(f"  👤 Login sebagai : {C.GREEN}{USERNAME}{C.RESET}")
+        print(f"  👑 Status        : {C.YELLOW}{STATUS_PENCIPTA}{C.RESET}")
+        print(f"  ▶  YouTube       : {C.RED}{NAMA_YOUTUBE}{C.RESET}")
+        print(f"  📞 Nomor default : {C.YELLOW}{NOMOR_DEFAULT}{C.RESET}\n")
+        print(f"  {C.GREEN}[1]{C.RESET} {C.WHITE}📨 SPAM OTP WA{C.RESET}")
+        print(f"  {C.GREEN}[2]{C.RESET} {C.WHITE}📨 SPAM OTP TELEGRAM{C.RESET}")
+        print(f"  {C.RED}[3]{C.RESET} {C.WHITE}{C.BLINK}💣 CANNON WA 💣{C.RESET}")
+        print(f"  {C.RED}[4]{C.RESET} {C.WHITE}{C.BLINK}💣 CANNON GRUB WA 💣{C.RESET}")
+        print(f"  {C.RED}[5]{C.RESET} {C.WHITE}🚫 BAN GRUB (SIMULASI){C.RESET}")
+        print(f"  {C.GREEN}[6]{C.RESET} Lihat Log")
+        print(f"  {C.GREEN}[7]{C.RESET} Hapus Log")
+        print(f"  {C.GREEN}[8]{C.RESET} Info / Disclaimer")
+        print(f"  {C.GREEN}[9]{C.RESET} Keluar")
+        pilih = input(f"\n  {C.CYAN}Pilih > {C.RESET}").strip()
+
+        if pilih == "1":
+            print_banner()
+            spam_otp("WhatsApp", LOG_FILE_WA, C.GREEN)
+            input("\n  Enter untuk kembali...")
+        elif pilih == "2":
+            print_banner()
+            spam_otp("Telegram", LOG_FILE_TG, C.BLUE)
+            input("\n  Enter untuk kembali...")
+        elif pilih == "3":
+            submenu_cannon()
+        elif pilih == "4":
+            submenu_cannon_grub()
+        elif pilih == "5":
+            submenu_ban_grub()
+        elif pilih == "6":
+            lihat_log()
+            input("\n  Enter untuk kembali...")
+        elif pilih == "7":
+            hapus_log()
+            input("\n  Enter untuk kembali...")
+        elif pilih == "8":
+            print_banner()
+            print(C.YELLOW)
+            print("  INFO / DISCLAIMER:")
+            print("  -------------------------------------------------")
+            print("  • .")
+            print("  • .")
+            print("  • .")
+            print("  • .")
+            print("  • .")
+            print("  • .")
+            print("  • .")
+            print("  -------------------------------------------------")
+            print(f"  👤 Author  : Azmi")
+            print(f"  👑 Status  : {STATUS_PENCIPTA}")
+            print(f"  ▶  YouTube : {NAMA_YOUTUBE}")
+            print(f"  🆔 Login   : {USERNAME}")
+            print(f"  📅 Tahun   : 2026")
+            print(C.RESET)
+            input("  Enter untuk kembali...")
+        elif pilih == "9":
+            print(f"\n{C.GREEN}[✓] Bye! - Azmi | YouTube: {NAMA_YOUTUBE}{C.RESET}\n")
+            sys.exit(0)
+        else:
+            print(f"\n{C.RED}[!] Pilihan tidak valid.{C.RESET}")
+            time.sleep(1)
+
+# ============ ENTRY POINT ============
+if __name__ == "__main__":
+    try:
+        if login():
+            menu()
+        else:
+            sys.exit(1)
+    except KeyboardInterrupt:
+        print(f"\n\n{C.GREEN}[✓] Dihentikan. - Azmi | YouTube: {NAMA_YOUTUBE}{C.RESET}\n")
