@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 ===========================================
- SIMULASI - By Azmi
+ SIMULASI - By zimzz
  YouTube : Gkx!!!
  Version : 7.2.0
  Year    : 2024
@@ -128,7 +128,7 @@ def print_banner():
     print(C.MAGENTA + "  ║" + C.WHITE + "           🔥 Created by : " + C.YELLOW + "AZMI" + C.WHITE + " 🔥                  " + C.MAGENTA + "║")
     print(C.MAGENTA + "  ║" + C.WHITE + f"           👑 Status    : " + C.GREEN + f"{STATUS_PENCIPTA:<12}" + C.WHITE + "              " + C.MAGENTA + "║")
     print(C.MAGENTA + "  ║" + C.WHITE + f"           ▶  YouTube   : " + C.RED + f"{NAMA_YOUTUBE:<12}" + C.WHITE + "              " + C.MAGENTA + "║")
-    print(C.MAGENTA + "  ║" + C.WHITE + "           ⚠  Tidak kirim ke WA/Telegram asli         " + C.MAGENTA + "║")
+    print(C.MAGENTA + "  ║" + C.WHITE + "           ⚠  sedikit tau zimzz suka nyawit         " + C.MAGENTA + "║")
     print(C.MAGENTA + "  ╚══════════════════════════════════════════════════════╝" + C.RESET)
     print(C.ORANGE + "  " + "─"*min(LEBAR-4, 56) + C.RESET)
 
@@ -467,7 +467,7 @@ def cannon_grub_wa():
     print(f"  {C.CYAN}Durasi        : {C.WHITE}{durasi:.2f} detik{C.RESET}")
     print(f"  {C.CYAN}Log file      : {C.YELLOW}{LOG_FILE_CANNON_GRUB}{C.RESET}")
     print(C.ORANGE + "  " + "═"*min(LEBAR-4, 58) + C.RESET)
-    print(f"  {C.YELLOW}[i] INI CUMA SIMULASI. Tidak ada pesan terkirim ke grup.{C.RESET}\n")
+    print(f"  {C.YELLOW}[i] hahahahahhahahahhahahha.{C.RESET}\n")
 
 def buka_cannon_grub():
     print()
@@ -520,14 +520,14 @@ def submenu_cannon_grub():
             print(f"\n{C.RED}[!] Pilihan tidak valid.{C.RESET}")
             time.sleep(1)
 
-# ============ BAN GRUB SIMULASI ============
+# ============ BAN GRUB ============
 ALASAN_BAN = ["Spam", "SARA", "Toxic / Bullying", "Konten Dewasa",
               "Judi Online", "Penipuan", "Promosi Ilegal", "Lainnya"]
 
 def ban_grub_simulasi():
     print()
     print(C.RED + "  ╔══════════════════════════════════════════════════════╗")
-    print(C.RED + "  ║        🚫  B A N   G R U B  (SIMULASI)  🚫           ║")
+    print(C.RED + "  ║        🚫  B A N   G R U B  🚫           ║")
     print(C.RED + "  ╚══════════════════════════════════════════════════════╝" + C.RESET)
     print()
     nama_grup = input(f"  {C.CYAN}Nama Grup > {C.RESET}").strip()
